@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Hourly 2 Monthly Cost Calculator</title>
+    <meta content="Hourly 2 Monthly Cost Calculator" name="keywords">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <meta content="ie=edge" name="x-ua-compatible">
+    <meta content="Hourly 2 Monthly Cost Calculator" name="apple-mobile-web-app-title">
+    <meta content="Hourly 2 Monthly Cost Calculator" name="application-name">
+    <meta content="#ffffff" name="theme-color">
+    <link href="/favicon.ico" rel="icon" type="image/x-icon">
+
+    <style>
+        body,
+        html {
+            padding: 0 .5rem;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+            font-size: 1rem;
+            max-height: 100vh
+        }
+
+        @media (min-width: 1200px) {
+
+            body,
+            html {
+                padding: 0;
+            }
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        p {
+            line-height: 1.5
+        }
+
+        .header {
+            display: block;
+            margin: 3rem 0
+        }
+
+        .calculator {
+            margin-bottom: 2rem
+        }
+
+        .calculator .hourstomonths {
+            background: #f6f8fa;
+            border: 1px solid #d8dee4;
+            border-radius: .25rem;
+            padding: 2rem 1rem
+        }
+
+        .github {
+            display: flex;
+        }
+
+        @media (min-width: 768px) {
+            .github {
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            .calculator .hourstomonths {
+                padding: 2rem;
+            }
+        }
+
+        .calculator .hourstomonths span {
+            display: inline-block;
+            margin: 0 0 0 .5rem
+        }
+
+        .calculator .hourstomonths .dollah {
+            font-weight: 700
+        }
+
+        .calculator .hourstomonths input[type=number] {
+            padding: .5rem 1rem;
+            border-radius: .25rem;
+            outline: 0;
+            font-size: 1rem;
+            border: 1px solid #d0d7de
+        }
+
+        .calculator .hourstomonths input[type=number]:focus {
+            border: 1px solid #0969da
+        }
+
+        .calculator .hourstomonths input[type=button] {
+            background: #2da44e;
+            border: 1px solid rgba(27, 31, 36, .15);
+            box-shadow: 0 1px 0 rgba(27, 31, 36, .1), inset 0 1px 0 rgba(255, 255, 255, .03);
+            padding: .5rem 1rem;
+            color: #fff;
+            border-radius: .25rem;
+            font-size: 1rem;
+            margin-left: .5rem;
+            cursor: pointer
+        }
+
+        .calculator .hourstomonths input[type=button]:hover {
+            background: #2c974b;
+            border: 1px solid rgba(27, 31, 36, .15)
+        }
+
+        .calculator .hourstomonths #result1,
+        .calculator .hourstomonths #result2 {
+            display: inline-block;
+            font-weight: 700
+        }
+
+        footer {
+            display: flex;
+            margin: 3rem 0;
+            width: 100%;
+        }
+
+        footer a {
+            color: #0969da;
+            margin-left: .25rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline
+        }
+
+        footer p {
+            width: 100%;
+
+        }
+
+        footer .github {
+            display: block;
+            justify-content: flex-start;
+        }
+
+        @media (min-width: 768px) {
+
+            footer p {
+                display: flex;
+            }
+
+            footer .github {
+                display: flex;
+                justify-content: flex-end;
+                margin-left: auto;
+            }
+        }
+
+        .row {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap
+        }
+
+        .col-sm-3,
+        .col-sm-6 {
+            position: relative;
+            width: 100%
+        }
+
+        @media (min-width: 768px) {
+            .col-sm-3 {
+                -ms-flex: 0 0 25%;
+                flex: 0 0 25%;
+                max-width: 25%
+            }
+
+            .col-sm-6 {
+                -ms-flex: 0 0 50%;
+                flex: 0 0 50%;
+                max-width: 50%
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-sm-3">
+
+        </div>
+        <div class="col-sm-6">
+            <section class="header">
+                <div class="container">
+                    <h1>Hourly 2 Monthly Cost Calculator</h1>
+                    <p>A Simple Tool to Convert the Hour 2 Monthly / Monthly to Hour Cost.</p>
+                </div>
+            </section>
+            <section class="calculator">
+                <div class="container">
+                    <p>Hourly 2 monthly calculator</p>
+                    <form class="hourstomonths" onSubmit="return false;">Cost per hour:<span>$</span> <input id="hourly"
+                            max="1000" min="0" placeholder="0.05" step="0.000001" type="number"> <input
+                            onclick="hourlytoMonthly()" type="button" value="Calculate"><br><br>Monthly cost:<span
+                            class="dollah">$</span>
+                        <div id="result1"></div>
+                    </form>
+                </div>
+            </section>
+            <section class="calculator">
+                <div class="container">
+                    <p>Monthly 2 hourly calculator</p>
+                    <form class="hourstomonths" onSubmit="return false;">Cost per month:<span>$</span> <input
+                            id="monthly" max="100000" min="0" placeholder="35" step="0.01" type="number"> <input
+                            onclick="monthlytoHourly()" type="button" value="Calculate"><br><br>Hourly cost:<span
+                            class="dollah">$</span>
+                        <div id="result2"></div>
+                    </form>
+                </div>
+            </section>
+            <footer>
+                <p>&copy;
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script>
+                    Hourly to Monthly. Built by <a href="//devomman.com">devomman</a>. <a class="github"
+                        href="//hour2month.github.io"><img src="/github.svg"
+                            style="margin-right:.25rem;margin-left:auto">View
+                        on
+                        GitHub</a>
+                </p>
+            </footer>
+        </div>
+        <div class="col-sm-3">
+
+        </div>
+    </div>
+    <script>
+        function hourlytoMonthly() {
+            const num1 = document.getElementById("hourly").value;
+            const result1 = document.getElementById("result1");
+            result1.innerHTML = (730 * num1).toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+        }
+
+        function monthlytoHourly() {
+            const num1 = document.getElementById("monthly").value;
+            const result2 = document.getElementById("result2");
+            result2.innerHTML = (num1 / 730).toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const hourlyInput = document.getElementById("hourly");
+            const monthlyInput = document.getElementById("monthly");
+            hourlyInput.addEventListener("keyup", (event) => {
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                    hourlytoMonthly();
+                }
+            });
+            monthlyInput.addEventListener("keyup", (event) => {
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                    monthlytoHourly();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
